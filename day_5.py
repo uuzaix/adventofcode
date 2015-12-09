@@ -39,3 +39,11 @@ def check_all_criteria(input):
 	return len(nice_string)
 
 print check_all_criteria(input)
+
+# part 2 solution using regexp
+import re
+
+def nice_part2(input):
+	return len([word for word in input if len(re.findall('(..).*\\1', word)) > 0 and len(re.findall('(.).\\1', word)) > 0])
+
+print nice_part2(input)
