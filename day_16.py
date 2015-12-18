@@ -15,7 +15,7 @@ def convert_input(input):
 	return aunts
 
 
-def find_aunt(aunts):
+def find_aunt1(aunts):
 	incorrect_aunts =[]
 	for aunt, param in aunts.iteritems(): 
 		for key in unknown_sue.keys():
@@ -26,4 +26,23 @@ def find_aunt(aunts):
 		del aunts[aunt]
 	return aunts
 
-print find_aunt(convert_input(input))
+
+def find_aunt2(aunts):
+	incorrect_aunts =[]
+	for aunt, param in aunts.iteritems(): 
+		for key in unknown_sue.keys():
+			if key in param.keys():
+				if key not in ['cats', 'trees', 'pomeranians', 'goldfish'] and param[key] != unknown_sue[key]:
+					incorrect_aunts.append(aunt)
+				elif key in ['cats', 'trees'] and param[key] <= unknown_sue[key]:
+					incorrect_aunts.append(aunt)
+				elif key in ['pomeranians', 'goldfish'] and param[key] >= unknown_sue[key]:
+					incorrect_aunts.append(aunt)
+
+	for aunt in set(incorrect_aunts):
+		del aunts[aunt]
+	return aunts
+
+
+print find_aunt1(convert_input(input))
+print find_aunt2(convert_input(input))
