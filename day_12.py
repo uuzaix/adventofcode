@@ -1,14 +1,9 @@
 import re
-import json
 
 with open('day_12.input') as f:
 	input = f.read()
 
-# all_numbers = []
-all_numbers = (re.findall("-?[0-9]+", input))
-# print all_numbers
+def find_numbers(input):
+	return sum(int(n) for n in re.findall("-?[0-9]+", input))
 
-sum = 0
-for i in all_numbers:
-	sum = sum + int(i)
-print sum
+print find_numbers(input)
