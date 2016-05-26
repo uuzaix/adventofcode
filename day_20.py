@@ -1,10 +1,10 @@
 def find_dividers(max):
 	x = 1
-	dividers = []
+	dividers = set()
 	while x ** 2 <= max:
 		if max % x == 0:
-			dividers.append(x)
-			dividers.append(max / x)
+			dividers.add(x)
+			dividers.add(max / x)
 		x += 1
 	return dividers
 
