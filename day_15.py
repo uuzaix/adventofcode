@@ -2,7 +2,7 @@ input = [[5,-1, 0, 0, 5], [-1, 3, 0, 0, 1], [0, -1, 4, 0, 6], [-1, 0, 0, 2, 8]]
 
 result = 0
 max = 0
-
+max_cal500 = 0
 for i in range(0,100):
 	for j in range(0, 100-i):
 		for k in range(0, 100-i-j):
@@ -11,12 +11,16 @@ for i in range(0,100):
 			dur = input[0][1]*i + input[1][1]*j + input[2][1]*k + input[3][1]*m
 			flav = input[0][2]*i + input[1][2]*j + input[2][2]*k + input[3][2]*m
 			tex = input[0][3]*i + input[1][3]*j + input[2][3]*k + input[3][3]*m
+			cal = input[0][4]*i + input[1][4]*j + input[2][4]*k + input[3][4]*m
 			if cap <= 0 or dur <= 0 or flav <= 0 or tex <= 0:
 				result = 0
 			else:
 				result = cap*dur*flav*tex
+			if cal == 500 and result > max_cal500:
+					max_cal500 = result
 			if result > max:
 				max = result
 print max
+print max_cal500
 
 
